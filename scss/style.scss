@@ -107,6 +107,10 @@ a {
 .menu {
    &__list {
       position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      top: 0;
       transform: translateX(-330%);
       transition: all 0.3s;
       background-color: #3b181e;
@@ -226,6 +230,9 @@ a {
       letter-spacing: 0.09em;
       padding: 100px 20px 0;
       margin-bottom: 35px;
+      span {
+         display: block;
+      }
    }
    &__main-btn {
       font-size: 10px;
@@ -289,6 +296,10 @@ a {
          width: 55px;
          height: 55px;
          margin: 0 40px;
+         svg {
+            width: 28px;
+            height: 28px;
+         }
       }
    }
 }
@@ -314,6 +325,10 @@ a {
          .social-item {
             background-color: transparent;
             margin: 0;
+            svg {
+               width: 25px;
+               height: 25px;
+            }
          }
       }
       &__main-btn {
@@ -346,6 +361,12 @@ a {
    justify-content: center;
    align-items: center;
    cursor: pointer;
+   &:hover {
+      box-shadow: 0 0 0 0 rgba(0, 40, 120, 0);
+      background-position: 0 0;
+      transform: translateY(3px);
+      transform: translateX(3px);
+   }
 }
 
 .services {
@@ -372,10 +393,16 @@ a {
    &__slider-inner:hover {
       cursor: pointer;
       background-color: rgba(0, 0, 0, 0.6);
-      .services__slider-title{
+
+      .services__slider-title {
          transform: translateY(-60px);
          z-index: 1;
          color: rgba(255, 255, 255, 0.9);
+      }
+      .services__slider-num,
+      .services__slider-num::after {
+         opacity: 0.9;
+         z-index: 1;
       }
    }
    &__slider-inner:hover::after {
@@ -397,7 +424,6 @@ a {
       font-size: 20px;
       line-height: 22px;
       position: relative;
-      flex: 1 1 auto;
       &::after {
          content: "";
          background-color: #fff;
@@ -405,7 +431,8 @@ a {
          width: 70px;
          height: 1px;
          margin-left: 10px;
-         top: 3%;
+         top: 50%;
+         transform: translateY(-50%);
       }
    }
    &__slider-title {
@@ -424,7 +451,7 @@ a {
       line-height: 13px;
       letter-spacing: 0.15em;
       background: #fff;
-      padding: 19px 30px;
+      padding: 19px 25px;
       opacity: 0;
       transition: all 0.3s ease-in;
       z-index: 1;
@@ -524,8 +551,8 @@ a {
 @media (min-width: 960px) {
    .promotions {
       .container-sm {
-         max-width: 1240px;
-         padding: 0 10px;
+         max-width: 1260px;
+         padding: 0 20px;
       }
       &__inner {
          display: flex;
@@ -574,6 +601,10 @@ a {
       justify-content: space-between;
       padding: 0 20px;
    }
+   .social-item svg {
+      width: 25px;
+      height: 25px;
+   }
 }
 @media (min-width: 768px) {
    .footer {
@@ -621,6 +652,9 @@ a {
       height: 445px;
       margin-bottom: 30px;
    }
+   &__slider-item {
+      width: auto;
+   }
    .title {
       font-size: 20px;
       line-height: 22px;
@@ -646,6 +680,19 @@ a {
       .slick-slide {
          width: auto;
       }
+      .slick-next .slick-arrow {
+         display: none;
+      }
+   }
+   &__slider-item img{
+      width: 75px;
+   }
+}
+@media (min-width: 768px) {
+   .page-wedding {
+       &__slider-item img{
+      width: auto;
+   }
    }
 }
 @media (min-width: 960px) {
@@ -655,7 +702,7 @@ a {
          width: 50%;
          height: 100vh;
       }
-      .promotions__info{
+      .promotions__info {
          width: 40%;
       }
       .promotions__link {
@@ -669,15 +716,26 @@ a {
          line-height: 27px;
          margin-bottom: 30px;
       }
-       &__slider {
-      .slick-slide {
-         width: auto;
-         margin: 0 5px;
+      &__slider {
+         .slick-slide {
+            width: auto;
+            margin: 0 5px;
+         }
+         .slick-next {
+            display: block;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            position: absolute;
+            right: 0px;
+            bottom: 50%;
+            transform: translateY(50%);
+         }
       }
    }
-   }
-   .footer--wedding{
+   .footer--wedding {
       display: none;
    }
 }
+
 //end page-wedding

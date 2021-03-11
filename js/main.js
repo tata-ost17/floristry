@@ -42,9 +42,13 @@ $(function () {
    });
 
    $('.page-wedding__slider').slick({
-      arrows: false,
+      prevArrow: false,
+      nextArrow: '<button class="slick-btn slick-next"><img src="images/arrow-next.svg" alt="next"></button>',
+      arrows: true,
       slidesToShow: 4,
       slidesToScroll: 1,
+      //centerMode: true,
+      //variableWidth: true,
       responsive: [
          {
             breakpoint: 1200,
@@ -58,14 +62,16 @@ $(function () {
             settings: {
                slidesToShow: 4,
                slidesToScroll: 1,
+               arrows: false,
             }
          },
         
          {
             breakpoint: 520,
             settings: {
-               slidesToShow: 2,
+               slidesToShow: 3,
                slidesToScroll: 1,
+               arrows: false,
             }
          },
 
