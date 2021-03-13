@@ -104,6 +104,10 @@ a {
    }
 }
 
+.logo {
+   z-index: 7;
+}
+
 .menu {
    &__list {
       position: absolute;
@@ -116,7 +120,7 @@ a {
       background-color: #3b181e;
       width: 100%;
       z-index: 3;
-      padding: 70px;
+      padding: 130px 70px 70px;
    }
    &__list.menu__list--active {
       transform: translateX(0%);
@@ -135,12 +139,11 @@ a {
       letter-spacing: 0.09em;
       color: rgba(255, 255, 255, 0.5);
       text-transform: uppercase;
-   }
-   &__list-link--title {
-      font-size: 25px;
-      line-height: 28px;
-      color: #fff;
-      margin-bottom: 55px;
+      transition: all 0.3s;
+      &:hover {
+         transform: scale(1.2);
+         color: #fff;
+      }
    }
    &__btn {
       display: block;
@@ -202,6 +205,14 @@ a {
       }
    }
 }
+@media (min-width: 960px) {
+   .menu {
+      &__list-link {
+         font-size: 35px;
+         line-height: 39px;
+      }
+   }
+}
 
 .header {
    padding-top: 0;
@@ -213,6 +224,12 @@ a {
       justify-content: space-between;
       padding: 15px 30px;
       align-items: center;
+   }
+   &__menu-inner.header__menu-inner--active {
+      transition: all 0.3s;
+      .logo {
+         margin: auto;
+      }
    }
    &__main {
       width: 100%;
@@ -642,6 +659,123 @@ a {
    }
 }
 
+#popup {
+   max-width: 288px;
+   background-color: #3b181e;
+   transition: all .3s ease-in;
+   &.fancybox-content {
+      padding: 0;
+   }
+}
+
+.call-popup {
+   .fancybox-slide--html .fancybox-close-small > svg {
+      color: rgba(255, 255, 255, 0.5);
+   }
+   &__img {
+      display: none;
+   }
+   &__info {
+      padding: 60px 20px 50px;
+   }
+   &__title {
+      font-size: 20px;
+      line-height: 22px;
+      text-align: center;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 30px;
+   }
+   &__form {
+      max-width: 100%;
+      margin: 0 auto;
+      input {
+         width: 100%;
+         margin-bottom: 16px;
+         display: block;
+         padding: 13px 20px;
+         color: #fff;
+         font-size: 14px;
+         line-height: 15px;
+         letter-spacing: -0.01em;
+         border: 1px solid #f6f6f9;
+         background-color: #3b181e;
+         outline: none;
+         &::placeholder {
+            font-size: 14px;
+            line-height: 15px;
+            letter-spacing: -0.01em;
+         }
+      }
+      button {
+         width: 100%;
+         color: #010001;
+         font-size: 11px;
+         line-height: 12px;
+         text-align: center;
+         letter-spacing: 0.15em;
+         padding: 12px;
+         cursor: pointer;
+      }
+   }
+}
+
+@media (min-width: 768px) {
+   #popup {
+      max-width: 464px;
+      padding: 104px 45px 80px;
+   }
+   .call-popup {
+      &__form {
+         input {
+            background-color: transparent;
+            padding: 20px 33px;
+            font-size: 20px;
+            line-height: 22px;
+            margin-bottom: 24px;
+            &::placeholder {
+               font-size: 20px;
+               line-height: 22px;
+            }
+         }
+      }
+      &__title {
+         padding: 0 20px;
+         line-height: 32px;
+      }
+   }
+}
+@media (min-width: 960px) {
+   #popup {
+      max-width: 720px;
+      padding: 0px;
+   }
+   .call-popup {
+      display: flex;
+      &__img {
+         display: block;
+         width: 50%;
+         img {
+            height: 100%;
+         }
+      }
+      &__info {
+         padding: 66px;
+      }
+      &__title {
+         margin-bottom: 44px;
+      }
+      &__form {
+         input {
+            font-size: 14px;
+            line-height: 15px;
+            padding: 14px 20px;
+         }
+      }
+   }
+}
+
 //start page-wedding
 .page-wedding {
    text-align: left;
@@ -684,15 +818,15 @@ a {
          display: none;
       }
    }
-   &__slider-item img{
+   &__slider-item img {
       width: 75px;
    }
 }
 @media (min-width: 768px) {
    .page-wedding {
-       &__slider-item img{
-      width: auto;
-   }
+      &__slider-item img {
+         width: auto;
+      }
    }
 }
 @media (min-width: 960px) {
@@ -717,9 +851,9 @@ a {
          margin-bottom: 30px;
       }
       &__slider {
-         .slick-slide {
+         .slick-track.slick-slide {
             width: auto;
-            margin: 0 5px;
+            //margin: 0 5px;
          }
          .slick-next {
             display: block;
